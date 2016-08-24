@@ -1,0 +1,29 @@
+{
+  "name": "1n1t",
+  "version": "1.0.0",
+  "description": "Git init or get current branch easily",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cagataycali/1n1t.git"
+  },
+  "keywords": [
+    "Git",
+    "cli",
+    "nodejs"
+  ],
+  "author": "Çağatay Çalı",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cagataycali/1n1t/issues"
+  },
+  "homepage": "https://github.com/cagataycali/1n1t#readme",
+  "dependencies": {
+    "3x3c": "^1.0.1",
+    "async": "^2.0.1",
+    "br4nch": "^1.0.3"
+  }
+}
