@@ -4,7 +4,7 @@ var async = require('async');
 
 module.exports = function() {
   B()
-    .then((value) => {console.log(value)})
+    .then((value) => {return value})
     .catch((err) => {
 
       console.log('Not a git repository (or any of the parent directories): .git');
@@ -13,8 +13,8 @@ module.exports = function() {
       prompt.start();
       prompt.get([{name:'url', required: true, description: "Git remote url: Ex. https://github.com/cagataycali/br4anch.git"}], function (err, result) {
         E(`git init && git remote add origin ${result.url} && git remote show origin`)
-          .then((value) => {console.log(value);})
-          .catch((err) => {console.log(err);});
+          .then((value) => {return value;})
+          .catch((err) => {return err});
       });
     });
 }
