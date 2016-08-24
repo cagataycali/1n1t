@@ -13,9 +13,9 @@ module.exports = function() {
         var prompt = require('prompt');
         prompt.start();
         prompt.get([{name:'url', required: true, description: "Git remote url: Ex. https://github.com/cagataycali/br4anch.git"}], function (err, result) {
-          E(`git init && git remote add origin ${result.url} && git remote show origin && git symbolic-ref HEAD`)
-            .then((value) => {resolve(value.split('/').pop(-1))})
-            .catch((err) => {reject(err)});
+          E(`git init && git remote add origin ${result.url} && git remote show origin && git symbolic-ref HEAD && echo "# Hi" >> README.md && git add . && git commit -m "Hi" && git push -u origin master`)
+            .then((value) => {console.log(value.split('/').pop(-1))})
+            .catch((err) => {console.log(err)});
         });
       });
   })
