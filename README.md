@@ -11,5 +11,5 @@ var I = require('1n1t');
 
 I()
   .then((value) => {console.log(value);})
-  .catch((err) => {console.log(reject(err));});
+  .catch((err) => {console.log(err);});
 ```
