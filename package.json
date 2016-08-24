@@ -1,6 +1,6 @@
 {
   "name": "1n1t",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Git init or get current branch easily",
   "main": "index.js",
   "scripts": {
