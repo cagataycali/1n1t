@@ -1,6 +1,9 @@
 var B = require('br4nch');
 var E = require('3x3c');
 var async = require('async');
+var updateNotifier = require('update-notifier');
+var pkg = require('./package.json');
+updateNotifier({pkg}).notify();
 
 module.exports = function() {
   return new Promise(function (resolve, reject) {
