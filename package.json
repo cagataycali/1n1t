@@ -1,7 +1,7 @@
 {
   "name": "1n1t",
   "version": "1.0.12",
-  "description": "Git init or get current branch easily",
+  "description": "Create github repository in programmatically.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,6 +25,8 @@
     "3x3c": "^1.0.1",
     "async": "^2.0.1",
     "br4nch": "^1.0.3",
+    "cmdify": "0.0.4",
+    "inquirer": "^1.1.2",
     "prompt": "^1.0.0",
     "update-notifier": "^1.0.2"
   }
