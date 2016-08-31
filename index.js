@@ -7,19 +7,6 @@ var pkg = require('./package.json');
 updateNotifier({pkg}).notify();
 var cmdify = require('cmdify');
 
-var loader = [
-  '/ Installing.',
-  '| Installing..',
-  '\\ Installing...',
-  '- Installing..'
-];
-var i = 4;
-var ui = new inquirer.ui.BottomBar({bottomBar: loader[i % 4]});
-
-setInterval(function () {
-  ui.updateBottomBar(loader[i++ % 4]);
-}, 300);
-
 module.exports = function() {
   return new Promise(function (resolve, reject) {
     B()
@@ -35,6 +22,19 @@ module.exports = function() {
         ];
 
         inquirer.prompt(questions).then(function (answers) {
+          var loader = [
+            '/ Installing.',
+            '| Installing..',
+            '\\ Installing...',
+            '- Installing..'
+          ];
+          var i = 4;
+          var ui = new inquirer.ui.BottomBar({bottomBar: loader[i % 4]});
+
+          setInterval(function () {
+            ui.updateBottomBar(loader[i++ % 4]);
+          }, 300);
+
           E(`git init && git remote add origin ${answers.url} && git remote show origin && git symbolic-ref HEAD && echo "# Hi" >> README.md && git add . && git commit -m "Hi" && git push -u origin master`)
               .then((value) => {
                 B()
