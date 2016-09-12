@@ -93,17 +93,26 @@ function check() {
            E(`git init && git remote add origin ${obj.url}`)
             .then((value) => {
               C(obj)
-               .then((value) => {resolve(obj)})
-               .catch((err) => {reject(value)})
+               .then((value) => {
+                 resolve(obj)
+               })
+               .catch((err) => {
+                 reject(value)
+               })
             })
          })
       })
-  });
+  })
 }
 
 module.exports = function run() {
   return new Promise(function(resolve, reject) {
   check()
-    .then((value) => {resolve(value)})
-    .catch((err) => {reject(err)})
+    .then((value) => {
+      resolve(value)
+    })
+    .catch((err) => {
+      reject(err)
+    })
+  })
 }
