@@ -90,13 +90,16 @@ function check() {
       .catch((err) => {
         questions()
          .then((obj) => {
-           E(`git init && git remote add origin ${obj.url}`)
+           E(`git init && git remote add origin ${obj.url.trim()}`)
             .then((value) => {
+              console.log(colors.green('Git init successfully.'));
               C(obj)
                .then((value) => {
+                 console.log(value);
                  resolve(obj)
                })
                .catch((err) => {
+                 console.log(err);
                  reject(value)
                })
             })
