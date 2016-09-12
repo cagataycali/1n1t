@@ -19,13 +19,7 @@ function q(content) {
   });
 }
 
-var contentFirst = [
-  {
-    type: 'confirm',
-    name: 'commitWithInit',
-    message: 'Would you want commit and initial push with init?',
-    default: true
-  },
+var content = [
   {
     type: 'input',
     name: 'url',
@@ -34,50 +28,16 @@ var contentFirst = [
       if (isGitUrl(value)) {
         return true;
       }
-
       return 'Please enter a git url.';
     }
   }
-];
-
-var contentSecond = [
-  {
-    type: 'input',
-    name: 'message',
-    message: 'What\'s your awesome hello new repo commit?',
-    validate: function (value) {
-      if (value.trim().length > 0) {
-        return true;
-      }
-
-      return 'Please write down your best comments...';
-    }
-  }
-];
+]
 
 function questions() {
   return new Promise(function(resolve, reject) {
-    q(contentFirst)
-      .then((output) => {
-        if (output.commitWithInit) {
-          q(contentSecond)
-            .then((value) => {
-              var obj = {
-                message: value.message,
-                url: output.url,
-                new: true,
-              }
-              resolve(obj)
-            })
-            .catch((err) => {reject(err);})
-        } else {
-          var obj = {
-            message: 'Awesome repository initialized with g3l.',
-            url: output.url,
-            new: true,
-          }
-          resolve(obj)
-        }
+    q(content)
+      .then((value) => {
+        resolve(output.url)
       })
       .catch((err) => {reject(err);})
   });
@@ -89,20 +49,12 @@ function check() {
       .then((value) => {console.log(colors.red('Git already initialized.'));})
       .catch((err) => {
         questions()
-         .then((obj) => {
-           E(`git init && git remote add origin ${obj.url.trim()}`)
+         .then((url) => {
+           E(`git init && git remote add origin ${url.trim()}`)
             .then((value) => {
-              console.log(colors.green('Git init successfully.'));
-              C({message: obj.message, new:true})
-               .then((value) => {
-                 console.log(value);
-                 resolve(obj)
-               })
-               .catch((err) => {
-                 console.log(err);
-                 reject(value)
-               })
+              resolve('Git init successfully.')
             })
+            .catch((err) => {reject(err)})
          })
       })
   })
