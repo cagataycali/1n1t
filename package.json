@@ -1,6 +1,6 @@
 {
   "name": "1n1t",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Create github repository in programmatically.",
   "main": "index.js",
   "scripts": {
