@@ -93,7 +93,7 @@ module.exports = function run() {
            E(`git init && git remote add origin ${obj.url}`)
             .then((value) => {
               C(obj)
-               .then((value) => {console.log('Committing done..');resolve(value)})
+               .then((value) => {console.log('Committing done..');resolve('Init successfully.')})
                .catch((err) => {reject(value)})
             })
          })
