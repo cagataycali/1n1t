@@ -83,7 +83,7 @@ function questions() {
   });
 }
 
-module.exports = function run() {
+function check() {
   return new Promise(function(resolve, reject) {
     B()
       .then((value) => {console.log(colors.red('Git already initialized.'));})
@@ -93,10 +93,17 @@ module.exports = function run() {
            E(`git init && git remote add origin ${obj.url}`)
             .then((value) => {
               C(obj)
-               .then((value) => {console.log('Committing done..');resolve('Init successfully.')})
+               .then((value) => {resolve(obj)})
                .catch((err) => {reject(value)})
             })
          })
       })
   });
+}
+
+module.exports = function run() {
+  return new Promise(function(resolve, reject) {
+  check()
+    .then((value) => {resolve(value)})
+    .catch((err) => {reject(err)})
 }
