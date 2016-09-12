@@ -93,7 +93,7 @@ function check() {
            E(`git init && git remote add origin ${obj.url.trim()}`)
             .then((value) => {
               console.log(colors.green('Git init successfully.'));
-              C(obj)
+              C({message: obj.message, new:true})
                .then((value) => {
                  console.log(value);
                  resolve(obj)
