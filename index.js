@@ -33,41 +33,19 @@ var content = [
   }
 ]
 
-function questions() {
-  return new Promise(function(resolve, reject) {
-    q(content)
-      .then((value) => {
-        resolve(output.url)
-      })
-      .catch((err) => {reject(err);})
-  });
-}
-
-function check() {
+module.exports = function run() {
   return new Promise(function(resolve, reject) {
     B()
       .then((value) => {console.log(colors.red('Git already initialized.'));})
       .catch((err) => {
-        questions()
-         .then((url) => {
-           E(`git init && git remote add origin ${url.trim()}`)
-            .then((value) => {
-              resolve('Git init successfully.')
-            })
-            .catch((err) => {reject(err)})
+        q(content)
+          .then((value) => {
+            E(`git init && git remote add origin ${value.url.trim()}`)
+             .then((value) => {
+               resolve('Git init successfully.')
+             })
+          })
+          .catch((err) => {reject(err);})
          })
       })
-  })
-}
-
-module.exports = function run() {
-  return new Promise(function(resolve, reject) {
-  check()
-    .then((value) => {
-      resolve(value)
-    })
-    .catch((err) => {
-      reject(err)
-    })
-  })
 }
