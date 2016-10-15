@@ -23,13 +23,7 @@ var content = [
   {
     type: 'input',
     name: 'url',
-    message: 'What\'s your git url?',
-    validate: function (value) {
-      if (isGitUrl(value)) {
-        return true;
-      }
-      return 'Please enter a git url.';
-    }
+    message: 'What\'s your git url? (Optional)'
   }
 ]
 
@@ -40,7 +34,14 @@ module.exports = function run() {
       .catch((err) => {
         q(content)
           .then((value) => {
-            E(`git init && git remote add origin ${value.url.trim()}`)
+            var command
+            if (isGitUrl(value.url.trim())) {
+              command = `git init && git remote add origin ${value.url.trim()}`
+            } else {
+              command = 'git init';
+              console.log(colors.green('Local git repository initialized'));
+            }
+            E(command)
              .then((value) => {
                resolve('Git init successfully.')
              })
