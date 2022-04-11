@@ -23,7 +23,7 @@
   "homepage": "https://github.com/cagataycali/1n1t#readme",
   "dependencies": {
     "3x3c": "^1.0.1",
-    "async": "^2.0.1",
+    "async": "^3.2.2",
     "br4nch": "^1.0.3",
     "c0mm1t": "^1.0.34",
     "inquirer": "^1.1.2",
