@@ -29,6 +29,6 @@
     "inquirer": "^1.1.2",
     "is-git-url": "^0.2.3",
     "node-emoji": "^1.4.1",
-    "update-notifier": "^1.0.2"
+    "update-notifier": "^2.3.0"
   }
 }
